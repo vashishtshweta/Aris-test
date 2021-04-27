@@ -1,0 +1,5 @@
+Aris Interview Test
+Timestamp: 2021-04-27T14:17:47.2485637Z 
+Repository: git@git.aristechnologies.com:server/KorePracticalTest.git
+Branch: interview
+Revision: 6bf16c8
