@@ -2,13 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$(document).load(loadCategoryList);
+$(document).ready(loadCategoryList);
 
-
-function init() {
-   
-    loadCategoryList();
-}
 function onCategoryChange(ctrl)
 {
     window.location.href = '?catFilter=' + ctrl.options[ctrl.selectedIndex].value;
@@ -36,6 +31,6 @@ function details(e) {
 
 
 function showResult(response) {
-    alert(response);
+    alert(JSON.stringify(response));
 }
 
