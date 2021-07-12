@@ -48,7 +48,7 @@
 
                     @if (game.Medal == null)
                     {
-            <a class="info-link" href="#" data-url="Home/Details?game=@game.Base64GameLink">Info</a> }
+            <a class="info-link" href="#" onclick="details(this)" data-url="Home/Details?game=@game.Base64GameLink">Info</a> }
                             else if (game.Medal.Level == 0)
                             {
             <span class="badge blue-medal">*</span> }

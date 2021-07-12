@@ -28,3 +28,14 @@ function showCategoryList(response) {
         sel.append('<option value="' + response[i] + '">' + response[i] + '</option>');
     }
 }
+
+function details(e) {
+    var url =  $(e).attr('data-url')
+    $.get(url).done(showResult);
+}
+
+
+function showResult(response) {
+    alert(response);
+}
+
