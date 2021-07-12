@@ -13,7 +13,9 @@
     <div class="col-12 col-sm-8">
         <div class="form-inline float-right">
             <label class="my-1 mr-2" for="category-filter">Category</label>
-            <select id="category-filter" class="custom-select" onchange="onCategoryChange(this)"></select>
+            <select id="category-filter" class="custom-select" onchange="onCategoryChange(this)">
+                <option value="1"></option>
+            </select>
         </div>
     </div>
 
@@ -28,51 +30,47 @@
                 <th scope="col">Category</th>
                 <th scope="col">Provider</th>
                 <th scope="col">Platform</th>
+                <th scope="col">Free Spins</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var game in Model.Games)
             {
-                <tr>
-                    <td>
+            <tr>
+                <td>
 
-                        @if (game.PlayGameLink != null)
-                        {
-                            <a href="@game.PlayGameLink">@game.Name</a>
-                        }
-                        else
-                        {
-                            @game.Name
-                        }
+                    @if (game.PlayGameLink != null)
+                    {
+            <a href="@game.PlayGameLink">@game.Name</a> }
+                            else
+                            {
+            @game.Name}
 
+                    @if (game.Medal == null)
+                    {
+            <a class="info-link" href="#" data-url="Home/Details?game=@game.Base64GameLink">Info</a> }
+                            else if (game.Medal.Level == 0)
+                            {
+            <span class="badge blue-medal">*</span> }
+                            else if (game.Medal.Level == 1)
+                            {
+            <span class="badge bronze-medal">*</span> }
+                            else if (game.Medal.Level == 2)
+                            {
+            <span class="badge silver-medal">*</span> }
+                            else if (game.Medal.Level == 3)
+                            {
+            <span class="badge gold-medal">*</span> }
+                            else if (game.Medal.Level == 3)
+                            {
+            <span class="badge diamond-medal">*</span>}
 
-                        @if (game.Medal.Level == 0)
-                        {
-                            <span class="badge blue-medal">*</span>
-                        }
-                        else if (game.Medal.Level == 1)
-                        {
-                            <span class="badge bronze-medal">*</span>
-                        }
-                        else if (game.Medal.Level == 2)
-                        {
-                            <span class="badge silver-medal">*</span>
-                        }
-                        else if (game.Medal.Level == 3)
-                        {
-                            <span class="badge gold-medal">*</span>
-                        }
-                        else if (game.Medal.Level == 3)
-                        {
-                            <span class="badge diamond-medal">*</span>
-                        }
-
-                        (<a class="info-link" href="#" data-url="Home/Details?game=@game.Base64GameLink">Info</a>)
-                    </td>
-                    <td>@game.Category</td>
-                    <td>@game.Provider</td>
-                    <td>@game.Platform</td>
-                </tr>
+                </td>
+                <td>@game.Category</td>
+                <td>@game.Provider</td>
+                <td>@game.Platform</td>
+                <td>@game.Free_Spins</td>
+            </tr>
             }
 
         </tbody>

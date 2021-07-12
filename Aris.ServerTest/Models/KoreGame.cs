@@ -10,12 +10,10 @@ namespace Aris.ServerTest.Models
         [JsonProperty("games")]
         public List<KoreGame> Games { get; set; }
     }
-
     public class KoreGame
     {
         public const string PLAY_LINK = "play";
         public const string SELF_LINK = "_self";
-        
 
         public KoreGame()
         {
@@ -23,6 +21,7 @@ namespace Aris.ServerTest.Models
             Links = new Dictionary<string, KoreLink>();
         }
 
+       
         [JsonProperty("provider")]
         public string Provider { get; set; }
 
@@ -55,6 +54,9 @@ namespace Aris.ServerTest.Models
 
         [JsonProperty("medal")]
         public KoreMedal Medal { get; set; }
+
+        [JsonProperty("free_spins")]
+        public bool Free_Spins { get; set; }
 
         public string PlayGameLink
         {

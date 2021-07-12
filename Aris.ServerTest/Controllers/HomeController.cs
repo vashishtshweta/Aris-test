@@ -21,7 +21,7 @@ namespace Aris.ServerTest.Controllers
         public async Task<IActionResult> Index(string catFilter, string returnUrl)
         {
             var viewModel = new ViewModels.GamesListViewModel();
-            var games = await _gameService.GetGamesAsync(GetAuthToken(), returnUrl);
+            var games = await _gameService.GetGamesAsync(GetAuthToken(), returnUrl, catFilter);
 
             viewModel.Games = games;
 
@@ -46,6 +46,17 @@ namespace Aris.ServerTest.Controllers
         {
             return View();
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetCategoryList(string game, string returnUrl)
+        {
+            var categoryList = new List<string>();
+
+            categoryList = await _gameService.GetCategoryAsync(GetAuthToken(), returnUrl);
+            return Json(categoryList);
+        }
+
 
     }
 }
